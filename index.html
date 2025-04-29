@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery 01</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <img src="inage.jpg" alt="Dragon Ball"><br>
+        <p>The Dragon Ball series, created by Akira Toriyama, is one of the most iconic and influential anime franchises in the world. It follows the journey of Goku, a Saiyan warrior raised on Earth, as he grows stronger and faces various powerful enemies. The story is divided into several parts, including Dragon Ball, Dragon Ball Z, Dragon Ball GT, and Dragon Ball Super. The series is known for its intense battles, powerful transformations, and deep character development.</p>
+      </div>
+      <div class="card">
+        <img src="image01.jpg" alt="Goku"><br>
+        <p>Goku (Kakarot) is the protagonist of the Dragon Ball series. Originally sent to Earth as a child, Goku is a Saiyan, a powerful warrior race. Despite his violent origins, he is kind-hearted and loves fighting strong opponents. His journey throughout the series is one of personal growth, where he constantly strives to become stronger through rigorous training and fierce battles. Goku is best known for his iconic transformation into Super Saiyan and his use of powerful attacks like the Kamehameha wave.</p>
+      </div>
+      <div class="card">
+        <img src="image02.jpg" alt="Vegeta"><br>
+        <p> Vegeta is the prince of the Saiyan race and initially appears as an antagonist in Dragon Ball Z. Proud, fierce, and often stoic, Vegeta has a complicated relationship with Goku. While he starts as a rival, over time, Vegeta becomes an ally and an important character in the series. His obsession with surpassing Goku is a major driving force behind his development. Vegeta is one of the most skilled fighters in the series, known for his signature attack, the Final Flash.</p>
+      </div>
+      <div class="card">
+        <img src="image03.jpg" alt="Gohan"><br>
+        <p>Gohan is the eldest son of Goku and Chi-Chi. From a young age, Gohan is depicted as highly intelligent and compassionate, with immense potential as a fighter. He is often more peaceful and studious than his father, but his power is unleashed in moments of great emotional distress, such as when he defeats Cell in the Dragon Ball Z series. Gohan's journey involves balancing his desire for peace with the responsibilities of being a warrior.</p>
+      </div>
+      <div class="card">
+        <img src="image04.jpg" alt="Gogeta"><br>
+        <p>Gogeta is the fusion of Goku and Vegeta, created using the Fusion Dance, a technique that temporarily combines two individuals into one being. As Gogeta, they combine their powers and abilities, resulting in a warrior with immense strength, speed, and fighting prowess. Gogeta is a fan-favorite due to his overwhelming power and charismatic personality, appearing in multiple Dragon Ball films, including Dragon Ball Z: Fusion Reborn and Dragon Ball Super: Broly.</p>
+      </div>
+      <div class="card">
+        <img src="image06.jpg" alt="Vegito"><br>
+        <p>Vegito is another fusion of Goku and Vegeta, but this time through the use of the Potara Earrings, which are magical items that fuse two individuals permanently. Vegito is one of the most powerful characters in the Dragon Ball universe, combining Goku and Vegeta's strength and intellect. Unlike Gogeta, who is often more carefree and aggressive, Vegito retains a more balanced and intelligent personality, and his power is truly overwhelming, as seen during his battle with the villain Majin Buu.</p>
+      </div>
+      <div class="card">
+        <img src="image07.jpg" alt="Frieza"><br>
+        <p>Frieza is one of the most iconic and infamous villains in the Dragon Ball series, widely regarded as one of the greatest antagonists in anime history. He is a tyrant from the universe's most dangerous race, the Frieza Force, and the emperor of the universe. Known for his cold, ruthless personality and sadistic nature, Frieza has left an indelible mark on the series, both as a character and in terms of his impact on the protagonists.</p>
+      </div>
+      <div class="card">
+        <img src="image05.jpg" alt="Goku Black"><br>
+        <p> Goku Black is a unique and mysterious character introduced in Dragon Ball Super. He is an alternate version of Goku from a different timeline who has been possessed by Zamasu, a corrupt Kaioshin. Zamasu's desire to rid the universe of mortals leads him to use Goku's body to enact his twisted plans. Goku Black possesses Goku's fighting abilities but also has a much darker and more sinister nature. His appearance and abilities evolve throughout the Future Trunks arc in Dragon Ball Super, making him one of the most dangerous enemies Goku and his allies have faced.</p>
+      </div>
+    </div>
+
+      <!-- Full Screen Overlay -->
+      <div class="overlay" id="overlay">
+        <button class="prev" id="prev">&#10094;</button>
+        <img id="overlay-img" src="" alt="Full screen image" />
+        <button class="next" id="next">&#10095;</button>
+      </div>
+  
+      <script>
+        const cards = document.querySelectorAll('.card');
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlay-img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+  
+        let currentIndex = -1;  // Track the current image index
+  
+        // Array of image sources
+        const imageSources = Array.from(cards).map(card => card.querySelector('img').src);
+  
+        // Function to update the overlay image
+        function updateOverlayImage(index) {
+          overlayImg.src = imageSources[index];
+        }
+  
+        // Event listener for each card click to show the full screen image
+        cards.forEach((card, index) => {
+          const img = card.querySelector('img');
+          
+          card.addEventListener('click', () => {
+            currentIndex = index;
+            updateOverlayImage(currentIndex);
+            overlay.style.display = 'flex';
+          });
+        });
+  
+        // Show next image
+        nextButton.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % imageSources.length;
+          updateOverlayImage(currentIndex);
+        });
+  
+        // Show previous image
+        prevButton.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+          updateOverlayImage(currentIndex);
+        });
+  
+        // Close overlay when clicked anywhere on the overlay
+        overlay.addEventListener('click', () => {
+          overlay.style.display = 'none';
+        });
+  
+        // Prevent the overlay buttons from closing the overlay when clicked
+        prevButton.addEventListener('click', (e) => e.stopPropagation());
+        nextButton.addEventListener('click', (e) => e.stopPropagation());
+      </script>
+  </body>
+</html>
