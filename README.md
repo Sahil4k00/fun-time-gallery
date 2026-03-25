@@ -13,5 +13,6 @@ This is a fun, interactive HTML + CSS + JS project that displays a visual galler
 
 ---
 
-## 🧱 Project Structure
+## Have a View
+https://sahil4k00.github.io/fun-time-gallery/
 
